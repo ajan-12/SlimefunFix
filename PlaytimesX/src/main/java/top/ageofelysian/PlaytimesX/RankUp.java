@@ -26,7 +26,7 @@ public class RankUp {
         if (a > 50400000) {
           if (a < 7000000) {
         	  ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-        	  String command = "scoreboard players operation" + player.getName() + "RankSymbolID Layers RankSymbolID";
+        	  String command = "scoreboard players operation" + sender.getName() + "RankSymbolID Layers RankSymbolID";
         	  Bukkit.dispatchCommand(console, command);
           }
         }
