@@ -1,0 +1,11 @@
+name: SlimefunFix
+main: top.ageofelysian.SlimefunFix.SlimefunFix
+version: 1.0
+author: ajan_12
+description: >
+             A plugin for fixing broken Slimefun items.
+commands:
+   sffix:
+      description: Fixes the broken slimefun items in your inventory.
+      aliases: sfix
+      usage: /sffix or /sfix to fix your stuff.
