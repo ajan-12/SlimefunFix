@@ -1,6 +1,5 @@
-# PlaytimesX
-A plugin that shows the players their playtimes and gives a customizable rank to the player when they reach the customizable milestone.
+# SlimefunFix
+A plugin for Age of Elysian that fixes glitched sf items/blocks.
 
 TO-DO:
-- Customize the ranks
-- Customize the playtimes
+- Add the items
