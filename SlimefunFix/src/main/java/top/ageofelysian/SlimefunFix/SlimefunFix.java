@@ -17,17 +17,17 @@ public final class SlimefunFix extends JavaPlugin {
 			if (sender instanceof Player) {
 		        Player player = (Player) sender;
 		        PlayerInventory inventory = player.getInventory();
-          //Checking if player has a skull item named CSCoreLib
-          ItemStack skullcheck = new ItemStack(Material.SKULL_ITEM, 1);
-          //if (OfflinePlayer.getOwningPlayer().equals("CSCoreLib")) {
+        //Checking if player has a skull item named CSCoreLib
+        ItemStack skullcheck = new ItemStack(Material.SKULL_ITEM, 1);
+        //if (OfflinePlayer.getOwningPlayer().equals("CSCoreLib")) {
               //if (inventory.contains(skullcheck)) {
 		        	      
               //}
-		        //}
-          private static String getSkullName(Skull skullcheck) {
+        //}
+	private static String getSkullName(Skull skullcheck) {
                  skullcheck.getOwningPlayer().getName();
-          }
-		    }
+        }
+		        }
 			return true;
 		}
 		return false; 
