@@ -24,9 +24,12 @@ public final class SlimefunFix extends JavaPlugin {
 			if (sender instanceof Player) {
 		        Player player = (Player) sender;
 		        PlayerInventory inventory = player.getInventory();
-		        ItemStack glitcheditem = new ItemStack(Material.SKULL_ITEM, 1);
-				if (inventory.contains(glitcheditem) && glitcheditem.getItemMeta().getDisplayName().equals("CSCoreLib")) {
-					OfflinePlayer owner = glitcheditem.getItemMeta(getSkullMeta()).getOwningPlayer();
+		        final ItemStack glitcheditem = new ItemStack(Material.SKULL_ITEM, 1);
+		        public interface SkullMeta extends ItemMeta {
+		        	if (inventory.contains(glitcheditem) && glitcheditem.getItemMeta().getDisplayName().equals("CSCoreLib")) {
+		        		OfflinePlayer owner = glitcheditem.getSkullMeta().getOwningPlayer();
+		        	
+		        	}
 		        }
 		    }
 			return true;
