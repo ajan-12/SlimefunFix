@@ -1,0 +1,31 @@
+name: SlimefunFix
+version: 1
+author: ajan_12
+description: SlimefunFix basically turns your broken Slimefun items into normal Slimefun items
+
+main: top.ageofelysian.SlimefunFix.SlimefunFix
+
+commands:
+  sffix:
+    description: Main command, fixes your items
+    usage: /sffix <argument>
+  lightningbolt:
+	description: Creates lightnings in range of 200 blocks
+	usage: /lightningbolt
+permissions:
+  sffix.*:
+    description: Givess all of the existing permissions of the plugin
+	default: op
+	children:
+	  sffix.help: true
+	  sffix.use: true
+	  sffix.lightning: true
+  sffix.help:
+	description: Gives access to the help screen
+	default: true
+  sffix.use:
+	description: Gives access to using the plugin to fix your sf items
+	default: true
+  sffix.lightning:
+	description: Gives access to plugin's lightning command
+	default: false
