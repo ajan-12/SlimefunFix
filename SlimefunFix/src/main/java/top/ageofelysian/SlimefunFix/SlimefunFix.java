@@ -61,7 +61,7 @@ public final class SlimefunFix extends JavaPlugin {
 							OfflinePlayer owner = skullMeta.getOwningPlayer();
 							ArrayList<String> itemlist = (ArrayList<String>)getConfig().getStringList("items.owner");
 							if (itemlist.contains(owner)) {
-								
+								(ArrayList<String>)getConfig().getStringList("items.owner")
 							}
 						}
 					} else {
