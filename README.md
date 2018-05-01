@@ -5,4 +5,3 @@ TO-DO:
 - Add the items(items.yml config)
 - Add dependency to Slimefun
 - Test
-- Clearing the item and etc.
