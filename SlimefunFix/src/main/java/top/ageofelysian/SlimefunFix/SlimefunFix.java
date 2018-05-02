@@ -19,6 +19,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SlimefunFix extends JavaPlugin {
 	
+	@Override
 	public void onEnable() {
 		getLogger().info(ChatColor.DARK_RED + "SlimefunFix loaded.");
 		try {
@@ -60,6 +61,9 @@ public final class SlimefunFix extends JavaPlugin {
 					        File file = new File(getDataFolder(), "items.yml");
 					        // variable owner is the owner of the item glitcheditem
 							OfflinePlayer owner = skullMeta.getOwningPlayer();
+							if (getConfig().getString("debug").equals("true")) {
+								player.sendMessage(ChatColor.DARK_RED + "[SfFix] DEBUG" + ChatColor.GRAY + " >" + owner);
+							}
 							ArrayList<String> itemowners = (ArrayList<String>)getConfig().getStringList("items.owners");
 							ArrayList<String> itemnames = (ArrayList<String>)getConfig().getStringList("items.names");
 							// If the arraylist itemowners has owner
@@ -68,16 +72,19 @@ public final class SlimefunFix extends JavaPlugin {
 								Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "sf give" + player + itemnames.get(fixeditem) + itemamount);
 								player.sendMessage(ChatColor.AQUA + "Your item" + ChatColor.RED + itemnames.get(fixeditem) + ChatColor.AQUA + "is fixed.");
 								glitcheditem.setAmount(0);
+								return true;
 							}
 						}
 					} else {
-					
+						player.sendMessage(ChatColor.DARK_RED + "You do not have enough permissions to perform this command.");
+						return false;
 					}
-				return true;
+				} else {
+					player.sendMessage(ChatColor.DARK_RED + "This command can only be applied in game!");
+					return false;
 				}
-			return true;
 			}
-			// If there is no args
+			// If the 1st arg is "help"
 			if (args[0] == "help") {
 				// If the sender is a player
 				if (sender instanceof Player) {
@@ -85,10 +92,33 @@ public final class SlimefunFix extends JavaPlugin {
 					if (player.hasPermission("sffix.help")) {
 						String help1 = "/sffix to fix your items.";
 						player.sendMessage(ChatColor.AQUA + help1);
+						return true;
+					} else {
+						player.sendMessage(ChatColor.DARK_RED + "You do not have enough permissions to perform this command.");
+						return false;
 					}
-				return true;
+				} else {
+					player.sendMessage(ChatColor.DARK_RED + "This command can only be applied in game!");
+					return false;
 				}
-			return true;
+			}
+			// If the 1st arg is "reload"
+			if (args[0] == "reload") {
+				// If the sender is a player
+				if (sender instanceof Player) {
+					// If player has the permission node sffix.reload
+					if (player.hasPermission("sffix.reload")) {
+						reloadConfig();
+						player.sendMessage(ChatColor.DARK_GREEN + "Plugin reloaded.");
+						return true;
+					} else {
+						player.sendMessage(ChatColor.DARK_RED + "You do not have enough permissions to perform this command.");
+						return false;
+					}
+				} else {
+					reloadConfig();
+					return true;
+				}
 			}
 		}
 		
@@ -103,9 +133,9 @@ public final class SlimefunFix extends JavaPlugin {
 						// Can only create lightning up to 200 blocks away.
 						player.getWorld().strikeLightning(player.getTargetBlock((Set<Material>) null, 200).getLocation());
 					}
-				return true;
+					return true;
 				}
-			return true;
+				return true;
 			}
 		}
 		return true;
