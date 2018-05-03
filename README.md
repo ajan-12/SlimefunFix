@@ -5,5 +5,3 @@ TO-DO:
 - Add the items(items.yml config)
 - Add dependency to Slimefun
 - Test
-
-# Doesn't work at the moment, feel free to fix the invalid plugin.yml issue
