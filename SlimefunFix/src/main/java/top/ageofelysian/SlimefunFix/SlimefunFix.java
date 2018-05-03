@@ -43,12 +43,12 @@ public final class SlimefunFix extends JavaPlugin {
 	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("sffix")) { // If the player typed /sffix then do the following
 			// If the command has no args
 			if (args.length == 0) {
 				//If the sender is a player
 				if (sender instanceof Player) {
+					Player player = (Player) sender;
 					// If the player has the permission node sffix.use
 					if (player.hasPermission("sffix.use")) {
 						PlayerInventory inventory = player.getInventory();
@@ -88,6 +88,7 @@ public final class SlimefunFix extends JavaPlugin {
 			if (args[0] == "help") {
 				// If the sender is a player
 				if (sender instanceof Player) {
+					Player player = (Player) sender;
 					// If player has the permission node sffix.help
 					if (player.hasPermission("sffix.help")) {
 						String help1 = "/sffix to fix your items.";
@@ -106,6 +107,7 @@ public final class SlimefunFix extends JavaPlugin {
 			if (args[0] == "reload") {
 				// If the sender is a player
 				if (sender instanceof Player) {
+					Player player = (Player) sender;
 					// If player has the permission node sffix.reload
 					if (player.hasPermission("sffix.reload")) {
 						reloadConfig();
@@ -127,6 +129,7 @@ public final class SlimefunFix extends JavaPlugin {
 			if (args.length == 0) {
 				// If the sender is a player
 				if (sender instanceof Player) {
+					Player player = (Player) sender;
 					// If the player has the permission node sffix.use
 					if (player.hasPermission("sffix.lightning")) {
 						// Creates a bolt of lightning at a given location. In this case, that location is where the player is looking.
