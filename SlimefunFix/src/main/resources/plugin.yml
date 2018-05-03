@@ -3,7 +3,7 @@ version: 1
 author: ajan_12
 description: SlimefunFix basically turns your broken Slimefun items into normal Slimefun items
 
-main: main.java.top.ageofelysian.SlimefunFix.SlimefunFix
+main: top.ageofelysian.SlimefunFix.SlimefunFix
  
 commands:
     sffix:
@@ -20,6 +20,7 @@ permissions:
             sffix.help: true
             sffix.use: true
             sffix.lightning: true
+            sffix.reload: true
     sffix.help:
         description: Gives access to the help screen
         default: true
@@ -29,3 +30,6 @@ permissions:
     sffix.lightning:
         description: Gives access to plugin's lightning command
         default: false
+    sffix.reload:
+        description: Gives access to plugin reload command.
+        default: op
