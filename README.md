@@ -1,11 +1,10 @@
 # SlimefunFix
-A plugin for Age of Elysian that fixes glitched sf items/blocks.
+A plugin that fixes glitched sf items/blocks.
 
-Depends: Slimefun4, CS-CoreLib and Exotic Garden.
+Depends: Slimefun4 and CS-CoreLib.
 
 Supports:
-  - ExoticGarden heads.
-  - Slimefun heads.
+  - All Slimefun and Slimefun addons' machines that's block is a player head.
 
 How to Use:
   - /sffix gui >>> Opens a gui that allows you to place Slimefun heads with textures.
