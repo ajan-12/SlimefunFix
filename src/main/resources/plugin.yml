@@ -1,0 +1,13 @@
+name: SlimefunFix
+version: ${project.version}
+main: me.ajan12.slimefunfix.SlimefunFix
+authors: [ajan_12]
+api-version: 1.14
+depend: [CS-CoreLib, Slimefun]
+description: A plugin that fixes broken slimefun items.
+
+commands:
+  slimefunfix:
+    description: Opens a gui where players can fix their broken slimefun items.
+    aliases: sffix
+    usage: /slimefunfix <help|gui>
