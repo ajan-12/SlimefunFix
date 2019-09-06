@@ -10,4 +10,12 @@ commands:
   slimefunfix:
     description: Opens a gui where players can fix their broken slimefun items.
     aliases: sffix
-    usage: /slimefunfix <help|gui>
+    usage: /slimefunfix
+
+permissions:
+  slimefunfix.use:
+    description: The permission node that gives permission to open the sffix gui.
+    default: true
+  slimefunfix.reload:
+    description: The permission node that gives permission to reload the plugin.
+    default: op

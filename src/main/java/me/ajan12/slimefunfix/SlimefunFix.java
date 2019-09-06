@@ -11,6 +11,7 @@ import io.github.thebusybiscuit.cscorelib2.updater.Updater;
 import org.bstats.bukkit.Metrics;
 
 public class SlimefunFix extends JavaPlugin implements CommandExecutor, Listener {
+    private static SlimefunFix instance;
 
     @Override
     public void onEnable() {
@@ -20,6 +21,7 @@ public class SlimefunFix extends JavaPlugin implements CommandExecutor, Listener
             return;
         }
 
+        instance = this;
         Config config = new Config(this);
 
         new Metrics(this);
@@ -30,5 +32,13 @@ public class SlimefunFix extends JavaPlugin implements CommandExecutor, Listener
         new SlimefunFixCommands();
         new SlimefunFixListener(this);
     }
+
+    @Override
+    public void onDisable() {
+        instance = null;
+        new Utils().reset();
+    }
+
+    static SlimefunFix getInstance() { return instance; }
 
 }

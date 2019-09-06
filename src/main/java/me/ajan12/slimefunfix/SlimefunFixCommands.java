@@ -24,31 +24,41 @@ class SlimefunFixCommands implements CommandExecutor {
             if (args.length == 1) {
                 switch (args[0]) {
 
-                    case "help":
-                        String pluginTag = ChatColor.WHITE + "[" + ChatColor.DARK_AQUA + "SFFIX" + ChatColor.WHITE + "] ";
-                        p.sendMessage(pluginTag + ChatColor.GREEN + "Put the broken Slimefun head blocks that has a texture inside and your fixed items will appear in your inventory or will be dropped. Any undefined item will not be touched. When you close the gui the items that were inside may get lost.");
-                        p.sendMessage(pluginTag + ChatColor.GREEN + "Please note that the broken items that may have the same texture wth another sf machine (f.e capacitors and gps transmitters) will give you the lowest possible item.");
+                    case "gui":
+                        if (p.hasPermission("slimefunfix.use")) {
+                            Inventory gui = utils.getGUI();
+                            if (gui == null) {
+                                p.sendMessage(ChatColor.DARK_RED + "An error occurred while trying to create the GUI.");
+                                p.sendMessage(ChatColor.DARK_RED + "Please report this to an Administrator.");
+                            } else p.openInventory(gui);
+                        } else p.sendMessage(ChatColor.DARK_RED + "You do not have permission to do this.");
                         return true;
 
-                    case "gui":
-                        Inventory gui = utils.getGUI();
-                        if (gui == null) {
-                            p.sendMessage(ChatColor.DARK_RED + "An error occurred while trying to create the GUI.");
-                            p.sendMessage(ChatColor.DARK_RED + "Please report this to an Administrator.");
-                        } else p.openInventory(gui);
+                    case "reload":
+                        if (p.hasPermission("slimefunfix.reload")) {
+                            p.sendMessage(ChatColor.GREEN + "Reloading the plugin.");
+                            utils.reload();
+                        } else p.sendMessage(ChatColor.DARK_RED + "You do not have permission to do this.");
                         return true;
                 }
+            }
 
-            } else if (args.length == 0){
-                String pluginTag = ChatColor.WHITE + "[" + ChatColor.DARK_AQUA + "SFFIX" + ChatColor.WHITE + "] ";
-                p.sendMessage(pluginTag + ChatColor.YELLOW + "/slimefunfix help " + ChatColor.GREEN + " to see how to fix your broken slimefun items.");
-                p.sendMessage(pluginTag + ChatColor.YELLOW + "/slimefunfix gui " + ChatColor.GREEN + " to fix your broken slimefun items.");
+            String pluginTag = ChatColor.WHITE + "[" + ChatColor.DARK_AQUA + "SFFIX" + ChatColor.WHITE + "] ";
+            p.sendMessage(pluginTag + ChatColor.YELLOW + "/slimefunfix help" + ChatColor.GREEN + " to see how to fix your broken slimefun items.");
+            p.sendMessage(pluginTag + ChatColor.YELLOW + "/slimefunfix gui" + ChatColor.GREEN + " to fix your broken slimefun items.");
+            return true;
+
+        } else {
+            if (args.length == 1 && args[0].equals("reload")) {
+                utils.info("Reloading the plugin.");
+                utils.reload();
                 return true;
             }
-        } else {
-            sender.sendMessage("This command can only be applied in-game!");
+
+            String pluginTag = "[SFFIX] ";
+            utils.info(pluginTag + "/slimefunfix help to see how to fix your broken slimefun items.");
+            utils.info(pluginTag + "/slimefunfix gui to fix your broken slimefun items.");
             return true;
         }
-        return false;
     }
 }

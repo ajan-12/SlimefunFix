@@ -16,6 +16,23 @@ import java.util.logging.Logger;
 
 final class Utils {
 
+    void reload() {
+        info("Reloading the plugin...");
+        LOGGER = null;
+
+        Config config = new Config(SlimefunFix.getInstance());
+        setupGUI(config);
+
+        info("Successfully reloaded the plugin.");
+    }
+
+    void reset() {
+        info("Resetting the stored values...");
+        gui = null;
+        guiName = null;
+        info("Reset the stored values.");
+    }
+
     private Logger LOGGER = null;
 
     void info(String... messages) {
@@ -41,13 +58,15 @@ final class Utils {
     private Integer[] HEAD_SLOT = {22};
 
     private Integer[][] INVALID_SLOTS = {INPUT_BORDER, OUTPUT_BORDER, OTHER_SLOTS, HELP_SLOT, HEAD_SLOT};
-    private Inventory gui;
-    private String guiName;
+    private static Inventory gui;
+    private static String guiName;
 
     boolean setupGUI(Config config) {
         try {
+            guiName = config.getString("options.gui-name");
+            if (guiName == null) guiName = getDefaultGUIName();
 
-            Inventory inv = Bukkit.createInventory(null, 27, getGUIName());
+            Inventory inv = Bukkit.createInventory(null, 27, guiName);
 
             ItemStack iB = new CustomItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, ChatColor.AQUA + "Put your broken items here.");
             for (Integer integer : INPUT_BORDER) {
@@ -76,8 +95,6 @@ final class Utils {
             }
 
             gui = inv;
-            guiName = config.getString("options.gui-name");
-            if (guiName == null) guiName = getDefaultGUIName();
 
         } catch (Exception e) {
             warn("An error occurred while trying to create the GUI.", e.toString());
