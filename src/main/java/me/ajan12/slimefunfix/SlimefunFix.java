@@ -25,8 +25,8 @@ public class SlimefunFix extends JavaPlugin implements CommandExecutor, Listener
         Config config = new Config(this);
 
         new Metrics(this);
-        Updater updater = new GitHubBuildsUpdater(this, getFile(), "ajan-12/SlimefunFix/master");
-        if (getConfig().getBoolean("options.auto-update")) updater.start();
+        //Updater updater = new GitHubBuildsUpdater(this, getFile(), "ajan-12/SlimefunFix/master");
+        //if (getConfig().getBoolean("options.auto-update")) updater.start();
 
         new Utils().setupGUI(config);
         new SlimefunFixCommands();
