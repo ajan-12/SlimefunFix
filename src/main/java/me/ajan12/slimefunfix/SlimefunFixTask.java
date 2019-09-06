@@ -49,7 +49,7 @@ class SlimefunFixTask implements Runnable {
 
                                                     itemStack.setAmount(0);
                                                     inv.setItem(outputSlot, stack);
-                                                    utils.info("[SlimefunFix] Giving player " + clicker.getName() + ", " + itemStack.getAmount() + " amount of " + SFItem.getID());
+                                                    utils.info("[SlimefunFix] Giving player " + clicker.getName() + ", " + stack.getAmount() + " amount of " + SFItem.getID());
                                                     return;
                                                 }
                                             }

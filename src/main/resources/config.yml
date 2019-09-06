@@ -1,2 +1,3 @@
 options:
   auto-update: true
+  gui-name: "&e[&aSFFIX&e] &9Item fixing GUI."
