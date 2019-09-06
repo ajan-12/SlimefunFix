@@ -6,7 +6,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
 class SlimefunFixCommands implements CommandExecutor {
 
@@ -31,8 +30,14 @@ class SlimefunFixCommands implements CommandExecutor {
                         return true;
 
                     case "gui":
-                        Inventory inventory = Bukkit.createInventory(null, 27, utils.getGUIName());
-                        p.openInventory(inventory);
+                        try {
+                            p.openInventory(utils.getGUI());
+                        } catch (Exception e) {
+                            p.sendMessage(ChatColor.DARK_RED + "An error occurred while trying to create the GUI.");
+                            p.sendMessage(ChatColor.DARK_RED + "Please report this to an Administrator.");
+
+                            utils.warn("An error occurred while trying to create the GUI.", e.toString());
+                        }
                         return true;
                 }
 
