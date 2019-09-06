@@ -47,6 +47,7 @@ class SlimefunFixTask implements Runnable {
                                                 ItemStack temp = inv.getItem(outputSlot);
                                                 if (temp == null || temp.getType() == Material.AIR) {
 
+                                                    itemStack.setAmount(0);
                                                     inv.setItem(outputSlot, stack);
                                                     utils.info("[SlimefunFix] Giving player " + clicker.getName() + ", " + itemStack.getAmount() + " amount of " + SFItem.getID());
                                                     return;
