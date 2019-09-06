@@ -6,8 +6,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.thebusybiscuit.cscorelib2.config.Config;
-import io.github.thebusybiscuit.cscorelib2.updater.GitHubBuildsUpdater;
-import io.github.thebusybiscuit.cscorelib2.updater.Updater;
 import org.bstats.bukkit.Metrics;
 
 public class SlimefunFix extends JavaPlugin implements CommandExecutor, Listener {

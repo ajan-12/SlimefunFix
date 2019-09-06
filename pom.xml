@@ -40,7 +40,6 @@
                             <artifact>com.github.thebusybiscuit:CS-CoreLib2</artifact>
                             <includes>
                                 <include>**/cscorelib2/config/**</include>
-                                <include>**/cscorelib2/updater/**</include>
                             </includes>
                         </filter>
                     </filters>
