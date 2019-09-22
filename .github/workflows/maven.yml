@@ -1,4 +1,4 @@
-name: Java CI
+name: Builder
 
 on: 
   push:
@@ -19,5 +19,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build with Maven
-      run: mvn package --file pom.xml
+    - uses: ajan-12/buildAction@v1
+      with:
+        LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL}}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN}}
