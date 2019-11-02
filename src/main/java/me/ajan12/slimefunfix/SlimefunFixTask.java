@@ -49,7 +49,10 @@ class SlimefunFixTask implements Runnable {
 
                                                     itemStack.setAmount(0);
                                                     inv.setItem(outputSlot, stack);
-                                                    utils.info("[SlimefunFix] Giving player " + clicker.getName() + ", " + stack.getAmount() + " amount of " + SFItem.getID());
+                                                    utils.info(Messages.Message.COMMAND_SUCCESS_DEBUG.getMessage()
+                                                            .replaceAll("%PLAYER%", clicker.getName())
+                                                            .replaceAll("%AMOUNT%", String.valueOf(stack.getAmount())).replaceAll("%ITEM%", SFItem.getID())
+                                                    );
                                                     return;
                                                 }
                                             }
@@ -58,7 +61,7 @@ class SlimefunFixTask implements Runnable {
                                 }
                             }
                         } catch (Exception | Error e) {
-                            utils.warn("You are using an outdated version of Slimefun!");
+                            utils.warn(Messages.Message.OUTDATED_SLIMEFUN.getMessage());
                             return;
                         }
                     }

@@ -20,6 +20,7 @@ class SlimefunFixListener implements Listener {
 
     @EventHandler
     public void onInventoryPutItemClick(InventoryClickEvent event) {
+        if (event.getClickedInventory() == null) return;
         Utils utils = new Utils();
         if (utils.getGUI() != null) {
             if (utils.isGUI(event.getView())) {

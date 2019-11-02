@@ -1,3 +1,28 @@
 options:
-  auto-update: true
-  gui-name: "&e[&aSFFIX&e] &9Item fixing GUI."
+  gui-name: "&9Item fixing GUI."
+
+messages:
+  missing-dependency: "The plugins, CS-CoreLib and Slimefun are needed for this plugin!"
+  outdated-slimefun: "You are using an outdated version of Slimefun!"
+
+  gui-error: "An error occurred while trying to create the GUI."
+  gui-input: "&bPut your broken items here."
+  gui-output: "&cTake your fixed items from here."
+  gui-help-name: "&eHow to use this?"
+  gui-help-lore-1: "&bPut a broken slimefun machine inside."
+  gui-help-lore-2: "&9Example broken slimefun machine:"
+
+  reload-begin: "Plugin reload is starting."
+  reload-success: "Successfully reloaded the plugin."
+
+  command-description: "Opens a gui where players can fix their broken slimefun items."
+  command-reload: "&aReloading the plugin."
+  command-help-1: "&e/slimefunfix help &ato see how to fix your broken slimefun items."
+  command-help-2: "&e/slimefunfix gui &ato fix your broken slimefun items."
+  command-fail-1: "&4An error occurred while trying to create the GUI."
+  command-fail-2: "&4Please report this to an Administrator."
+  permission-fail: "&4You do not have permission to do this."
+
+  # %PLAYER%, %AMOUNT% and %ITEM% are needed!
+  # These placeholders are replaced with the fixed player's nick, fixed item amount and fixed item's id.
+  command-success-debug: "Giving player %PLAYER%, %AMOUNT% amount of %ITEM%"

@@ -5,13 +5,16 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
 class SlimefunFixCommands implements CommandExecutor {
 
     SlimefunFixCommands() {
-        Bukkit.getPluginCommand("slimefunfix").setExecutor(this);
+        PluginCommand command = Bukkit.getPluginCommand("slimefunfix");
+        command.setDescription(Messages.Message.COMMAND_DESCRIPTION.getMessage());
+        command.setExecutor(this);
     }
 
     @Override
@@ -28,36 +31,34 @@ class SlimefunFixCommands implements CommandExecutor {
                         if (p.hasPermission("slimefunfix.use")) {
                             Inventory gui = utils.getGUI();
                             if (gui == null) {
-                                p.sendMessage(ChatColor.DARK_RED + "An error occurred while trying to create the GUI.");
-                                p.sendMessage(ChatColor.DARK_RED + "Please report this to an Administrator.");
+                                p.sendMessage(Messages.Message.COMMAND_FAIL_1.getMessage());
+                                p.sendMessage(Messages.Message.COMMAND_FAIL_2.getMessage());
                             } else p.openInventory(gui);
-                        } else p.sendMessage(ChatColor.DARK_RED + "You do not have permission to do this.");
+                        } else p.sendMessage(Messages.Message.PERMISSION_FAIL.getMessage());
                         return true;
 
                     case "reload":
                         if (p.hasPermission("slimefunfix.reload")) {
-                            p.sendMessage(ChatColor.GREEN + "Reloading the plugin.");
+                            p.sendMessage(Messages.Message.COMMAND_RELOAD.getMessage());
                             utils.reload();
-                        } else p.sendMessage(ChatColor.DARK_RED + "You do not have permission to do this.");
+                        } else p.sendMessage(Messages.Message.PERMISSION_FAIL.getMessage());
                         return true;
                 }
             }
 
-            String pluginTag = ChatColor.WHITE + "[" + ChatColor.DARK_AQUA + "SFFIX" + ChatColor.WHITE + "] ";
-            p.sendMessage(pluginTag + ChatColor.YELLOW + "/slimefunfix help" + ChatColor.GREEN + " to see how to fix your broken slimefun items.");
-            p.sendMessage(pluginTag + ChatColor.YELLOW + "/slimefunfix gui" + ChatColor.GREEN + " to fix your broken slimefun items.");
+            p.sendMessage(Messages.Message.COMMAND_HELP_1.getMessage());
+            p.sendMessage(Messages.Message.COMMAND_HELP_2.getMessage());
             return true;
 
         } else {
             if (args.length == 1 && args[0].equals("reload")) {
-                utils.info("Reloading the plugin.");
+                utils.info(ChatColor.stripColor(Messages.Message.COMMAND_RELOAD.getMessage()));
                 utils.reload();
                 return true;
             }
 
-            String pluginTag = "[SFFIX] ";
-            utils.info(pluginTag + "/slimefunfix help to see how to fix your broken slimefun items.");
-            utils.info(pluginTag + "/slimefunfix gui to fix your broken slimefun items.");
+            utils.info(ChatColor.stripColor(Messages.Message.COMMAND_HELP_1.getMessage()));
+            utils.info(ChatColor.stripColor(Messages.Message.COMMAND_HELP_2.getMessage()));
             return true;
         }
     }

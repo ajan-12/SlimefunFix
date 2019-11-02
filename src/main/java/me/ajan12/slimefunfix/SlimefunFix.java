@@ -13,19 +13,19 @@ public class SlimefunFix extends JavaPlugin implements CommandExecutor, Listener
 
     @Override
     public void onEnable() {
+        instance = this;
+        final Config config = new Config(this);
+
         if (Bukkit.getServer().getPluginManager().getPlugin("CS-CoreLib") == null || Bukkit.getServer().getPluginManager().getPlugin("Slimefun") == null) {
-            Bukkit.getLogger().warning("The plugins, CS-CoreLib and Slimefun are needed for this plugin!");
+            final String message = config.getString("missing-dependency");
+            Bukkit.getLogger().warning(message == null ? "The plugins, CS-CoreLib and Slimefun are needed for this plugin!" : message);
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
-        instance = this;
-        Config config = new Config(this);
-
         new Metrics(this);
-        //Updater updater = new GitHubBuildsUpdater(this, getFile(), "ajan-12/SlimefunFix/master");
-        //if (getConfig().getBoolean("options.auto-update")) updater.start();
 
+        Messages.setupMessages(config);
         new Utils().setupGUI(config);
         new SlimefunFixCommands();
         new SlimefunFixListener(this);

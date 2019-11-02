@@ -8,7 +8,6 @@ description: A plugin that fixes broken slimefun items.
 
 commands:
   slimefunfix:
-    description: Opens a gui where players can fix their broken slimefun items.
     aliases: sffix
     usage: /slimefunfix
 
