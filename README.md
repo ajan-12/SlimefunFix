@@ -5,6 +5,7 @@ Depends: Slimefun4 and CS-CoreLib.
 
 Supports:
   - All Slimefun and Slimefun addons' machines that's block is a player head.
+  - Localization. You can change every single sentence used in the plugin.
 
 How to Use:
-  - /sffix gui >>> Opens a gui that allows you to place Slimefun heads with textures.
+  - /sffix >>> Opens an help page that guides you around the plugin.
